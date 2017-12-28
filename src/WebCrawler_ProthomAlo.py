@@ -20,12 +20,16 @@ def spider(url):
         for pText in soup1.find_all(["p", "h1"]):
             if pText.string:
                 print(pText.string)
+                fw.write(pText.string.encode('utf8'))
+                fw.write("\n".encode("utf-8"))
 
-        # for pText in soup1.find_all("p", {"class": "TEXT"}):
-        #    print(pText.string)
-            #if pText:fw.write(pText.string.encode('utf8'))
-            #fw.write(pText.string.encode("utf-8"))
+        for pText in soup1.find_all("p", {"class": "TEXT"}):
+            #print(pText.string)
+            if pText != None:
+                print(pText.string.encode('utf8'))
+                fw.write(pText.string.encode('utf8'))
+                fw.write("\n".encode("utf-8"))
 
-#    fw.close()
+    fw.close()
 
 spider("http://www.prothom-alo.com/")
